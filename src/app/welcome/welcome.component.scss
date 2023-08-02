@@ -1,0 +1,53 @@
+.container-fluid{
+    display:flex;
+    position:relative;
+}
+
+.container-fluid .application-description{
+    padding-top:12rem;
+    padding-left: 6rem;
+    text-align:left;
+    margin:auto;
+    width:95%;
+    background-color:#f8f8f8;
+    color:black;
+    height: 76vh;
+    border-radius: 20px;
+    h4{
+        width:50%;
+    }    
+}
+
+.application-action{
+    
+    width:30%;
+    padding:3rem 2rem 5rem 2rem;
+    border-radius: 20px;
+    display:flex;
+    flex-direction: column;
+    z-index: 10;
+    position:absolute;
+    right:7rem;
+    background-color: white;
+    color:grey;
+    top: 7rem;
+
+    h5{
+        font-size:18px;
+        margin-top:2rem;
+        text-align: center;
+    }
+
+    button{
+        font-size:12px;
+        text-align: center;
+        width:50%;
+        margin-top: 10px;
+        border-radius: 50px;
+        margin-left:6rem;
+        // margin-right: 8rem;
+        background-color: #3141b4;
+    }
+
+    
+}

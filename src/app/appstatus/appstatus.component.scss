@@ -1,0 +1,255 @@
+.form-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:76vh;
+  }
+  
+  form{
+    width:56%;
+    margin-top: 5px;
+  }
+  .preview{
+    input{
+      width:100%;
+    }
+    label{
+      margin-top: 10px;
+    }
+  }
+  
+  .loan-details-header {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top:10px;
+    margin-bottom: -10px;
+    h5{
+      display:inline-block;
+    }
+  
+    .loan-loan-det {
+      border: 1px solid black;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      text-align: center;
+      padding: 10px;
+      background-color: rgb(0, 0, 128);
+      color: white;
+      width: 300px;
+    }
+  
+    .loan-contact-det {
+      border: 1px solid white;
+      margin-left: 0.5%;
+      text-align: center;
+      padding: 10px;
+      width: 300px;
+      color: rgb(112, 112, 112);
+      background-color: rgb(232, 232, 232);
+    }
+  
+    .loan-employ-det {
+      border: 1px solid white;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      margin-left: 0.5%;
+      text-align: center;
+      padding: 10px;
+      width: 300px;
+      color: rgb(112, 112, 112);
+      background-color: rgb(232, 232, 232);
+    }
+  }
+  
+  .loandetails{
+    input{
+      width:100%;
+    }
+  
+    select{
+      width:100%;
+      height:29px;
+    }
+  
+    textarea{
+      width:97%;
+      margin:auto;
+      height:3rem;
+    }
+  
+    label{
+      margin-top:10px;
+    }
+  }
+  
+  
+  .bn {
+    display: flex;
+  
+    button {
+      flex: 0.2;
+      margin:auto;
+      margin-top:15px;
+      border-radius: 20px;
+      background-color: rgb(0, 0, 128);
+      color: white;
+      border: white;
+      padding: 10px;
+    }
+  
+    .btn3 {
+      margin-left: -50px;
+    }
+  }
+  
+  
+  // contact details
+  
+  .contact-head{
+    // margin-top:20px;
+    margin-bottom:-10px;
+  }
+  
+  .contact-details-header {
+      display: flex;    
+      flex-direction: row;
+      justify-content: center;
+      margin-top:10px;
+  
+      h5{
+        display: inline-block;
+      }    
+  
+      .contact-loan-det {
+        border: 1px solid white;  
+        border-top-left-radius: 20px;  
+        border-bottom-left-radius: 20px;  
+        text-align: center;  
+        padding: 10px;  
+        background-color: rgb(232, 232, 232);  
+        color: rgb(112, 112, 112);  
+        width: 300px;
+      }
+    
+      .contact-contact-det {
+        border: 1px solid white;  
+        margin-left: 0.5%;  
+        text-align: center;  
+        padding: 10px;  
+        width: 300px;  
+        color: white;  
+        background-color: rgb(0, 0, 128);
+      }
+    
+      .contact-employ-det {
+        border: 1px solid white;  
+        border-top-right-radius: 20px;  
+        border-bottom-right-radius: 20px;  
+        margin-left: 0.5%;  
+        text-align: center;  
+        padding: 10px;  
+        width: 300px;  
+        color: rgb(112, 112, 112);  
+        background-color: rgb(232, 232, 232);
+      }
+    }
+  
+    .contactdetails{
+      input{
+        width:100%;
+      }
+      label{
+        margin-top:7px;
+      }
+    }
+  
+  //employedetails
+  
+  .employ-details-header {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top:10px;
+    margin-bottom:-10px;
+    h5{
+      display:inline-block;
+    }
+  
+    // margin-bottom:20px;
+    
+      .employ-loan-det {
+        border: 1px solid white;  
+        border-top-left-radius: 20px;  
+        border-bottom-left-radius: 20px;   
+        text-align: center;  
+        padding: 10px;  
+        background-color: rgb(232, 232, 232);  
+        color:rgb(112, 112, 112);  
+        width: 300px;
+      }
+    
+      .employ-contact-det {
+        border: 1px solid white;  
+        margin-left: 0.5%;  
+        text-align: center;  
+        padding: 10px;  
+        width: 300px;  
+        color: rgb(112, 112, 112);  
+        background-color: rgb(232, 232, 232);
+      }
+    
+      .employ-employ-det {
+        border: 1px solid white;  
+        border-top-right-radius: 20px;  
+        border-bottom-right-radius: 20px;  
+        margin-left: 0.5%;  
+        text-align: center;  
+        padding: 10px;  
+        width: 300px;  
+        color: white;  
+        background-color: rgb(0, 0, 128);
+      }
+    }
+  
+    .employeedetails{
+      input{
+        width:100%;
+      }
+  
+      label{
+        margin-top:10px;
+      }
+    }
+  
+    .employee-head{
+      margin-top:20px;
+      margin-bottom:-10px;
+    }
+  
+    label{
+      color:grey;
+    }
+  
+    input, select{
+      background-color: rgb(230, 230, 255);
+      border: none;
+      border-radius:10px;
+      height:30px;
+    }
+  
+  .form-text{
+    height:5px;
+  }
+  
+  input, select, textarea{
+    background-color: rgb(230, 230, 255);
+    border: none;
+    border-radius:10px;
+    height:30px;
+  }
+  
+  textarea{
+    height:10px;
+  }
+    

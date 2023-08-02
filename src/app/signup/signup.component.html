@@ -1,0 +1,209 @@
+<div class="container-fluid">
+  <div class="description">
+    <h1>
+      <b><i>Need It.</i></b>
+    </h1>
+
+    <h1>
+      <b><i>Get It.</i></b>
+    </h1>
+
+    <h2>Now get your loan approved instantly.</h2>
+  </div>
+
+  <form 
+    class="signupform" [formGroup]="signupForm"
+    (ngSubmit)="signupSubmitted()"
+  >
+    <div class="form-group">
+      <h3><b>SIGN UP</b></h3>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <label for="firstName"><b>First Name</b></label>
+
+          <input
+            type="text"
+            required
+            maxlength="255"
+            class="form-control"
+            formControlName="firstName"
+            [(ngModel)]="user.firstName"
+          />
+          
+          <div
+            class="form-text text-danger"
+            *ngIf="firstName.errors?.['required'] && (firstName.dirty || firstName.touched)"
+          >
+            Please enter First Name.
+          </div>
+
+          <div
+            class="form-text text-danger"
+            *ngIf="firstName.errors?.['maxlength'] && (firstName.dirty ||firstName.touched)"
+          >
+            First Name is too long.
+          </div>
+          <div
+              class="form-text text-danger"
+              *ngIf="firstName.errors?.['pattern'] && (firstName.dirty || firstName.touched)"
+            >
+              First Name should be alphabetical.
+            </div>
+        </div>
+
+        <div class="col">
+          <label for="lastName"><b>Last Name</b></label>
+
+          <input
+            type="text"
+            required
+            maxlength="255"
+            class="form-control"
+            formControlName="lastName"
+            [(ngModel)]="user.lastName"
+          />
+
+          <div
+            class="form-text text-danger"
+            *ngIf="lastName.errors?.['required'] && (lastName.dirty || lastName.touched)"
+          >
+            Please enter Last Name.
+          </div>
+
+          <div
+            class="form-text text-danger"
+            *ngIf="lastName.errors?.['maxlength'] && (lastName.dirty || lastName.touched)"
+          >
+            Last Name is too long.
+          </div>
+          <div
+              class="form-text text-danger"
+              *ngIf="lastName.errors?.['pattern'] && (lastName.dirty || lastName.touched)"
+            >
+              Last Name should be alphabetical.
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="emailId"><b>Email Id</b></label>
+
+          <input
+            type="emailId"
+            required
+            class="form-control"
+            formControlName="emailId"
+            [(ngModel)]="user.emailId"
+          /> 
+
+          <div
+            class="form-text text-danger"
+            *ngIf="emailId.errors?.['required'] && (emailId.dirty || emailId.touched)"
+          >
+            Please enter Email Id.
+          </div>
+
+          <div
+            class="form-text text-danger"
+            *ngIf="emailId.errors?.['email'] && (emailId.dirty || emailId.touched)"
+          >
+            Please enter valid Email Id.
+          </div>
+        </div>
+
+        <div class="col">
+          <label for="phoneNumber"><b>Mobile No.</b></label>
+
+          <input
+            type="text"
+            required
+            class="form-control"
+            formControlName="phoneNumber"
+            [(ngModel)]="user.phoneNumber"
+            minlength="10"
+            maxlength="10"
+          />
+
+          <div
+            class="form-text text-danger"
+            *ngIf="phoneNumber.errors?.['required'] && (phoneNumber.dirty || phoneNumber.touched)"
+          >
+            Please enter Mobile No.
+          </div>
+
+          <div
+            class="form-text text-danger"
+            *ngIf="phoneNumber.errors?.['pattern'] && (phoneNumber.dirty || phoneNumber.touched)"
+          >
+            Please enter valid Mobile No.
+          </div>
+
+          <div
+            class="form-text text-danger"
+            *ngIf="phoneNumber.errors?.['minlength'] && (phoneNumber.dirty || phoneNumber.touched)"
+          >
+            Mobile No. is short.
+          </div>
+
+          <div
+            class="form-text text-danger"
+            *ngIf="phoneNumber.errors?.['maxlength'] && (phoneNumber.dirty || phoneNumber.touched)"
+          >
+            Mobile No. is long.
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="userName"><b>Username</b></label>
+
+          <input
+            type="text"
+            required
+            class="form-control"
+            formControlName="userName"
+            [(ngModel)]="user.userName"
+          />
+
+          <div
+            class="form-text text-danger"
+            *ngIf="userName.errors?.['required'] && (userName.dirty || userName.touched)"
+          >
+            Please enter UserName.
+          </div>
+        </div>
+
+        <div class="col">
+          <label for="password"><b>Password</b></label>
+
+          <input
+            type="password"
+            required
+            class="form-control"
+            formControlName="password"
+            [(ngModel)]="user.password"
+          />
+
+          <div
+            class="form-text text-danger"
+            *ngIf="Password.errors?.['required'] && (Password.dirty || Password.touched)"
+          >
+            Please enter Password.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" id="signUp"><b>CREATE ACCOUNT</b></button>
+
+    <p>
+      Already a Member? <a routerLink="/login"><b>Login Here</b></a>
+    </p>
+  </form>
+</div>
+

@@ -1,0 +1,37 @@
+.success{
+    height: 700px;
+    margin: 20px;
+    padding: 40px;
+    border-radius: 10px;
+    background-image: url("https://img.freepik.com/free-vector/blue-abstract-gradient-wave-vector-background_53876-111548.jpg?w=2000&t=st=1690282826~exp=1690283426~hmac=8c6ed34944032d79dfb40167142c155f500938fca0870151398e2601fb4ce67f");
+}
+.headline h6,
+.headline p{
+    display: inline-block;
+    margin: 10px 10px 10px 0;
+    color: grey;
+}
+
+.btns{
+    float: right;
+    margin: 100px 150px 400px 150px;
+    
+    .btn1{
+        margin-right: 60px;
+        padding: 10px;
+        border-radius: 8px;
+        border: white ;
+        background-color: #3141b4;
+        color: white;
+        width: 130px;
+    }
+    .btn2{
+        padding: 10px;
+        border-radius: 8px;
+        border: white ;
+        background-color: #3141b4;
+        color: white;
+        width: 200px;
+    }
+
+}

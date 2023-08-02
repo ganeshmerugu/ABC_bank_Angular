@@ -1,0 +1,557 @@
+<div class="form-container">
+
+  <form>
+
+    <div class="preview">
+
+      <div class="row">
+
+        <div class="col">
+
+          <label for="appid">Application ID</label>
+
+          <input
+
+            type="number"
+
+            readonly
+
+            [value]="application.applicationId"
+
+          />
+
+        </div>
+
+        <div class="col">
+
+          <label for="appstatus">Application Status</label>
+
+          <input type="text" readonly [value]="application.status" />
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col">
+
+          <label for="score">Score</label>
+
+          <input type="text" readonly [value]="application.score" />
+
+        </div>
+
+        <div class="col">
+
+          <label for="declinereason">Decline Reason</label>
+
+          <input
+
+            type="text"
+
+            readonly
+
+            [value]="application.declineReasons"
+
+          />
+
+        </div>
+
+      </div>
+
+    </div>
+
+ 
+
+    <div *ngIf="step == 1">
+
+      <div class="loan-details-header">
+
+        <h5 class="loan-loan-det">LOAN DETAILS</h5>
+
+        <h5 class="loan-contact-det">CONTACT DETAILS</h5>
+
+        <h5 class="loan-employ-det">EMPLOYMENT DETAILS</h5>
+
+      </div>
+
+      <div class="loandetails">
+
+        <div class="row">
+
+          <div class="col-md-6 required">
+
+            <label for="firstname">First Name</label>
+
+            <input type="text" readonly [value]="application.firstName" />
+
+          </div>
+
+ 
+
+          <div class="col-md-6">
+
+            <label for="middlename">Middle Name</label>
+
+            <input type="text" readonly [value]="application.middleName " />
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6 required">
+
+            <label for="lastname">Last Name</label>
+
+            <input type="text" readonly [value]="application.lastName" />
+
+          </div>
+
+          <div class="col-md-6 required">
+
+            <label for="dob">Date of Birth</label>
+
+            <input
+
+              type="date"
+
+              readonly
+
+              [value]="application.dateOfBirth"
+
+            />
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col required">
+
+            <label for="maritalstatus">Marital Status</label>
+
+            <select
+
+              name="maritalstatus"
+
+              id="maritalstatus"
+
+              readonly
+
+              [value]="application.maritalStatus"
+
+            >
+
+              <option value="none" hidden></option>
+
+              <option value="Single">Single</option>
+
+              <option value="Married">Married</option>
+
+              <option value="Separated">Separated</option>
+
+              <option value="Divorced">Divorced</option>
+
+              <option value="Widowed">Widowed</option>
+
+            </select>
+
+          </div>
+
+          <div class="col required">
+
+            <label for="SSN">SSN Number</label>
+
+            <input type="text" readonly [value]="application.ssnNumber " />
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col required">
+
+            <label for="loanamount">Loan Amount ($)</label>
+
+            <input
+
+              type="number"
+
+              readonly
+
+              [value]="application.loanAmount "
+
+            />
+
+          </div>
+
+          <div class="col required">
+
+            <label for="loanpurpose">Loan Purpose</label>
+
+            <select
+
+              name="loanpurpose"
+
+              id="loanpurpose"
+
+              readonly
+
+              [value]="application.loanPurpose"
+
+            >
+
+              <option value="none" hidden></option>
+
+              <option value="debt">Debt</option>
+
+              <option value="eduloan">Educational Loan</option>
+
+              <option value="personalloan">Personal Loan</option>
+
+              <option value="homeloan">Home Loan</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+ 
+
+        <div class="row">
+
+          <label for="loandesc" class="loandesc">Description</label>
+
+          <textarea
+
+            name="loandesc"
+
+            id="loandesc"
+
+            cols="90"
+
+            rows="2"
+
+            readonly
+
+            [value]="application.description "
+
+          ></textarea>
+
+        </div>
+
+      </div>
+
+ 
+
+      <div class="bn">
+
+        <button class="btn2" routerLink="/viewapplications">BACK</button>
+
+        <button class="btn3" type="submit" (click)="next()">NEXT</button>
+
+      </div>
+
+    </div>
+
+ 
+
+    <!-- Contact Details -->
+
+    <div *ngIf="step == 2" class="contactdetails">
+
+      <div class="contact-details-header">
+
+        <h5 class="contact-loan-det">LOAN DETAILS</h5>
+
+        <h5 class="contact-contact-det">CONTACT DETAILS</h5>
+
+        <h5 class="contact-employ-det">EMPLOYMENT DETAILS</h5>
+
+      </div>
+
+      <h5 class="contact-head">Address -</h5>
+
+      <div class="row">
+
+        <div class="col required">
+
+          <label for="addressl1">Address Line 1</label>
+
+          <input type="text" readonly [value]="application.addressLine1" />
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col">
+
+          <label for="addressl2">Address Line 2</label>
+
+          <input type="text" readonly [value]="application.addressLine2" />
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col required">
+
+          <label for="city">City</label>
+
+          <input type="text" readonly [value]="application.city" />
+
+        </div>
+
+        <div class="col required">
+
+          <label for="state">State</label>
+
+          <input type="text" readonly [value]="application.state" />
+
+        </div>
+
+        <div class="col required">
+
+          <label for="postalcode">Postal Code</label>
+
+          <input type="text" readonly [value]="application.postalCode" />
+
+        </div>
+
+      </div>
+
+      <h5 class="contact-head">Contact Information -</h5>
+
+      <div class="row">
+
+        <div class="col required">
+
+          <label for="homephone">Home Phone</label>
+
+          <input type="text" readonly [value]="application.homePhone" />
+
+        </div>
+
+        <div class="col">
+
+          <label for="officephone">Office Phone</label>
+
+          <input type="text" readonly [value]="application.officePhone" />
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col required">
+
+          <label for="mobile">Mobile</label>
+
+          <input type="text" readonly [value]="application.mobileNumber" />
+
+        </div>
+
+        <div class="col required">
+
+          <label for="email">Email Address</label>
+
+          <input type="email" readonly [value]="application.emailAddress" />
+
+        </div>
+
+      </div>
+
+ 
+
+      <div class="bn">
+
+        <button class="btn2" (click)="previous()">PREVIOUS</button>
+
+        <button class="btn3" (click)="next()">NEXT</button>
+
+      </div>
+
+    </div>
+
+ 
+
+    <!-- Employee Details -->
+
+    <div *ngIf="step == 3" class="employeedetails">
+
+      <div class="employ-details-header">
+
+        <h5 class="employ-loan-det">LOAN DETAILS</h5>
+
+        <h5 class="employ-contact-det">CONTACT DETAILS</h5>
+
+        <h5 class="employ-employ-det">EMPLOYMENT DETAILS</h5>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col col-md-6 required">
+
+          <label for="employername">Employer's Name</label>
+
+          <input type="text" readonly [value]="application.employerName" />
+
+        </div>
+
+        <div class="col col-md-3">
+
+          <label for="workexp">Work Experience</label>
+
+          <input
+
+            type="number"
+
+            readonly
+
+            [value]="application.workExperienceYear"
+
+          />
+
+        </div>
+
+        <div class="col col-md-3">
+
+          <label>&nbsp;</label>
+
+          <input
+
+            type="number"
+
+            readonly
+
+            [value]="application.workExperienceMonth"
+
+          />
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col required">
+
+          <label for="salary">Annual Salary ($)</label>
+
+          <input
+
+            type="number"
+
+            readonly
+
+            [value]="application.annualSalary"
+
+          />
+
+        </div>
+
+        <div class="col">
+
+          <label for="designation">Designation</label>
+
+          <input type="text" readonly [value]="application.designation" />
+
+        </div>
+
+      </div>
+
+      <h5 class="employee-head">Office Address</h5>
+
+      <div class="row">
+
+        <div class="col required">
+
+          <label for="offaddl1">Address Line 1</label>
+
+          <input
+
+            type="text"
+
+            readonly
+
+            [value]=" application.employerAddressLine1 "
+
+          />
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col">
+
+          <label for="offaddl2">Address Line 2</label>
+
+          <input
+
+            type="text"
+
+            readonly
+
+            [value]="application.employerAddressLine2 "
+
+          />
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col required">
+
+          <label for="off-city">City</label>
+
+          <input type="text" readonly [value]="application.employerCity">
+
+        </div>
+
+        <div class="col required">
+
+          <label for="off-state">State</label>
+
+          <input type="text" readonly [value]="application.employerState">
+
+        </div>
+
+        <div class="col required">
+
+          <label for="off-postalcode">Postal Code</label>
+
+          <input type="text" readonly [value]="application.employerPostalCode">
+
+        </div>
+
+      </div>
+
+      <div class="bn">
+
+        <button class="btn2" (click)="previous()">PREVIOUS</button>
+
+        <button class="btn3" routerLink="/viewapplications">DONE</button>
+
+      </div>
+
+    </div>
+
+  </form>
+
+</div>

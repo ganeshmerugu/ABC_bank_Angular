@@ -1,0 +1,803 @@
+<div class="form-container">
+  <form   (ngSubmit)="submit()" [formGroup]="multistep" >
+    <div *ngIf="step == 1">
+      <div class="loan-details-header">
+        <h5 class="loan-loan-det">LOAN DETAILS</h5>
+        <h5 class="loan-contact-det">CONTACT DETAILS</h5>
+        <h5 class="loan-employ-det">EMPLOYMENT DETAILS</h5>
+      </div>
+      <div class="loandetails">
+        <div class="row">
+          <div class="col-md-6 required">
+            <label>First Name</label>
+            <input
+              type="text"
+              required
+              maxlength="255"
+              formControlName="fName"
+              [(ngModel)]="user.firstName"
+              id="firstName"
+              name="firstName"
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="FName.errors?.['required'] && (FName.dirty || FName.touched)"
+            >
+              Please enter First Name.
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="FName.errors?.['maxlength'] && (FName.dirty ||FName.touched)"
+            >
+              First Name is too long.
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="FName.errors?.['pattern'] && (FName.dirty || FName.touched)"
+            >
+              First Name should be alphabetical.
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Middle Name</label>
+            <input
+              type="text"
+              maxlength="255"
+              formControlName="mName"
+              [(ngModel)]="user.middleName"
+              id="middleName"
+              name="middleName"
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="MName.errors?.['maxlength'] && (MName.dirty ||MName.touched)"
+            >
+              Middle Name is too long.
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="MName.errors?.['pattern'] && (MName.dirty || MName.touched)"
+            >
+              Middle Name should be alphabetical.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 required">
+            <label>Last Name</label>
+            <input
+              type="text"
+              required
+              maxlength="255"
+              formControlName="lName"
+              [(ngModel)]="user.lastName"
+              id="lastName"
+              name="lastName"
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="LName.errors?.['required'] && (LName.dirty || LName.touched)"
+            >
+              Please enter Last Name.
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="LName.errors?.['maxlength'] && (LName.dirty ||LName.touched)"
+            >
+              Last Name is too long.
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="LName.errors?.['pattern'] && (LName.dirty || LName.touched)"
+            >
+              Last Name should be alphabetical.
+            </div>
+          </div>
+          <div class="col-md-6 required">
+            <label>Date of Birth</label>
+            <input
+              type="date"
+              formControlName="dob"
+              [(ngModel)]="user.dateOfBirth"
+              id="dateOfBirth"
+              name="dateOfBirth"
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="dob.errors?.['required'] && (dob.dirty || dob.touched)"
+            >
+              Please enter Date of Birth.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col required">
+            <label for="maritalstatus">Marital Status</label>
+            <select
+              name="maritalstatus"
+              id="maritalstatus"
+              required
+              formControlName="marital"
+              [(ngModel)]="user.maritalStatus"
+            >
+              <option value="none" hidden></option>
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+              <option value="Separated">Separated</option>
+              <option value="Divorced">Divorced</option>
+              <option value="Widowed">Widowed</option>
+            </select>
+            <div
+              class="form-text text-danger"
+              *ngIf="Marital.errors?.['required'] && (Marital.dirty || Marital.touched)"
+            >
+              Please select Marital Status.
+            </div>
+          </div>
+          <div class="col required">
+            <label for="SSN">SSN Number</label>
+            <input
+              type="text"
+              required
+              maxlength="9"
+              minlength="9"
+              formControlName="ssn"
+              [(ngModel)]="user.ssnNumber"
+              id="ssnNumber"
+              name="ssnNumber"
+              
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="ssn.errors?.['required'] && (ssn.dirty || ssn.touched)"
+            >
+              Please enter SSN number.
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="ssn.errors?.['pattern'] && (ssn.dirty || ssn.touched)"
+            >
+              SSN Number should be numeric.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col required">
+            <label for="loanamount">Loan Amount ($)</label>
+            <input
+              type="number"
+              required
+              placeholder="$"
+              formControlName="amount"
+              [(ngModel)]="user.loanAmount"
+              id="loanAmount"
+              name="loanAmount"
+              min="0"
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="Amount.errors?.['required'] && (Amount.dirty || Amount.touched)"
+            >
+              Please enter Loan Amount in $.
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="Amount.errors?.['pattern'] && (Amount.dirty || Amount.touched)"
+            >
+              Loan Amount should be numeric.
+            </div>
+          </div>
+          <div class="col required">
+            <label for="loanpurpose">Loan Purpose</label>
+            <select
+              name="loanpurpose"
+              id="loanpurpose"
+              required
+              formControlName="purpose"
+              [(ngModel)]="user.loanPurpose"
+            >
+              <option value="none" hidden></option>
+              <option value="debt">Debt</option>
+              <option value="eduloan">Educational Loan</option>
+              <option value="personalloan">Personal Loan</option>
+              <option value="homeloan">Home Loan</option>
+            </select>
+            <div
+              class="form-text text-danger"
+              *ngIf="Purpose.errors?.['required'] && (Purpose.dirty || Purpose.touched)"
+            >
+              Please enter Loan Purpose.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="loandesc" class="loandesc">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            cols="90"
+            rows="3"
+            placeholder="Describe the reason why you are applying for the loan..."
+            formControlName="desc"
+            [(ngModel)]="user.description"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="bn">
+        <button class="btn2" routerLink="/welcome">BACK</button>
+        <button class="btn3" type="submit" id="submitDetails">NEXT</button>
+      </div>
+      <!-- <br>
+        <pre>{{multistep.value | json}}</pre> -->
+    </div>
+
+    <!-- Contact Details -->
+    <div *ngIf="step == 2" class="contactdetails">
+      <div class="contact-details-header">
+        <h5 class="contact-loan-det">LOAN DETAILS</h5>
+        <h5 class="contact-contact-det">CONTACT DETAILS</h5>
+        <h5 class="contact-employ-det">EMPLOYMENT DETAILS</h5>
+      </div>
+      <h5 class="contact-head">Address -</h5>
+      <div class="row">
+        <div class="col required">
+          <label for="addressl1">Address Line 1</label>
+          <input
+            type="text"
+            required
+            maxlength="255"
+            formControlName="addLine1"
+            [(ngModel)]="user.addressLine1"
+            id="addressLine1"
+            name="addressLine1"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="AddLine1.errors?.['required'] && (AddLine1.dirty || AddLine1.touched)"
+          >
+            Please enter Address.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="AddLine1.errors?.['maxlength'] && (AddLine1.dirty ||AddLine1.touched)"
+          >
+            Address is too long.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="addressl2">Address Line 2</label>
+          <input
+            type="text"
+            maxlength="255"
+            formControlName="addLine2"
+            [(ngModel)]="user.addressLine2"
+            id="addressLine2"
+            name="addressLine2"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="AddLine2.errors?.['maxlength'] && (AddLine2.dirty ||AddLine2.touched)"
+          >
+            Address is too long.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col required">
+          <label for="city">City</label>
+          <input
+            type="text"
+            required
+            maxlength="255"
+            formControlName="city"
+            [(ngModel)]="user.city"
+            id="city"
+            name="city"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="City.errors?.['required'] && (City.dirty || City.touched)"
+          >
+            Please enter City.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="City.errors?.['maxlength'] && (City.dirty ||City.touched)"
+          >
+            City Name is too long.
+          </div>
+          <div
+              class="form-text text-danger"
+              *ngIf="City.errors?.['pattern'] && (City.dirty || City.touched)"
+            >
+              City Name should be alphabetical.
+            </div>
+        </div>
+        <div class="col required">
+          <label for="state">State</label>
+          <input
+            type="text"
+            required
+            maxlength="255"
+            formControlName="state"
+            [(ngModel)]="user.state"
+            id="state"
+            name="state"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="State.errors?.['required'] && (State.dirty || State.touched)"
+          >
+            Please enter State.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="State.errors?.['maxlength'] && (State.dirty ||State.touched)"
+          >
+            State Name is too long.
+          </div>
+          <div
+              class="form-text text-danger"
+              *ngIf="State.errors?.['pattern'] && (State.dirty || State.touched)"
+            >
+              State Name should be alphabetical.
+            </div>
+        </div>
+        <div class="col required">
+          <label for="postalcode">Postal Code</label>
+          <input
+            type="text"
+            formControlName="postal"
+            [(ngModel)]="user.postalCode"
+            id="postalCode"
+            name="postalCode"
+            maxlength="5"
+            minlength="5"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="Postal.errors?.['required'] && (Postal.dirty || Postal.touched)"
+          >
+            Please enter Postal Code.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Postal.errors?.['pattern'] && (Postal.dirty || Postal.touched)"
+          >
+            Postal Code should be numeric.
+          </div>
+
+          <div
+            class="form-text text-danger"
+            *ngIf="Postal.errors?.['minlength'] && (Postal.dirty ||Postal.touched)"
+          >
+            Postal Code is too short.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Postal.errors?.['maxlength'] && (Postal.dirty ||Postal.touched)"
+          >
+            Postal Code is too long.
+          </div>
+        </div>
+      </div>
+      <h5 class="contact-head">Contact Information -</h5>
+      <div class="row">
+        <div class="col required">
+          <label for="homephone">Home Phone</label>
+          <input
+            type="text"
+            required
+            minlength="10"
+            maxlength="10"
+            formControlName="home"
+            [(ngModel)]="user.homePhone"
+            id="homePhone" name="homePhone"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="Home.errors?.['required'] && (Home.dirty || Home.touched)"
+          >
+            Please enter Home Phone No.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Home.errors?.['pattern'] && (Home.dirty || Home.touched)"
+          >
+            Home Phone should be numeric.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Home.errors?.['maxlength'] && (Home.dirty ||Home.touched)"
+          >
+            Home Phone is too long.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Home.errors?.['minlength'] && (Home.dirty ||Home.touched)"
+          >
+            Home Phone is too short.
+          </div>
+        </div>
+        <div class="col">
+          <label for="officephone">Office Phone</label>
+          <input
+            type="text"
+            minlength="10"
+            maxlength="10"
+            formControlName="office"
+            [(ngModel)]="user.officePhone"
+            id="officePhone" name="officePhone"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="Office.errors?.['pattern'] && (Office.dirty || Office.touched)"
+          >
+            Office Phone should be numeric.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Office.errors?.['maxlength'] && (Office.dirty ||Office.touched)"
+          >
+            Office Phone is too long.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Office.errors?.['minlength'] && (Office.dirty ||Office.touched)"
+          >
+            Office Phone is too short.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col required">
+          <label for="mobile">Mobile</label>
+          <input
+            type="text"
+            required
+            minlength="10"
+            maxlength="10"
+            formControlName="mobile"
+            [(ngModel)]="user.mobileNumber"
+            id="mobileNumber" name="mobileNumber"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="Mobile.errors?.['required'] && (Mobile.dirty || Mobile.touched)"
+          >
+            Please enter Mobile No.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Mobile.errors?.['pattern'] && (Mobile.dirty || Mobile.touched)"
+          >
+            Mobile No. should be numeric.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Mobile.errors?.['maxlength'] && (Mobile.dirty ||Mobile.touched)"
+          >
+            Mobile No. is too long.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Mobile.errors?.['minlength'] && (Mobile.dirty ||Mobile.touched)"
+          >
+            Mobile No. is too short.
+          </div>
+        </div>
+        <div class="col required">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            required
+            formControlName="email"
+            [(ngModel)]="user.emailAddress"
+            
+            id="emailAddress" name="emailAddress"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="Email.errors?.['required'] && (Email.dirty || Email.touched)"
+          >
+            Please enter Email Id.
+          </div>
+
+          <div
+            class="form-text text-danger"
+            *ngIf="Email.errors?.['email'] && (Email.dirty || Email.touched)"
+          >
+            Please enter valid Email Id.
+          </div>
+        </div>
+      </div>
+
+      <div class="bn">
+        <button class="btn2" (click)="previous()">PREVIOUS</button>
+        <button class="btn3" type="submit" id="submitDetails">NEXT</button>
+      </div>
+      <!-- <br>
+        <pre>{{multistep.value | json}}</pre> -->
+    </div>
+
+    <!-- Employee Details -->
+    <div *ngIf="step == 3" class="employeedetails">
+      <div class="employ-details-header">
+        <h5 class="employ-loan-det">LOAN DETAILS</h5>
+        <h5 class="employ-contact-det">CONTACT DETAILS</h5>
+        <h5 class="employ-employ-det">EMPLOYMENT DETAILS</h5>
+      </div>
+      <div class="row">
+        <div class="col col-md-6 required">
+          <label for="employername">Employer's Name</label>
+          <input
+            type="text"
+            required
+            maxlength="255"
+            formControlName="eName"
+            [(ngModel)]="user.employerName"
+            id="employerName" name="employerName"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="EName.errors?.['required'] && (EName.dirty || EName.touched)"
+          >
+            Please enter Employer's Name.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="EName.errors?.['maxlength'] && (EName.dirty ||EName.touched)"
+          >
+            Employer's Name is too long.
+          </div>
+        </div>
+        <div class="col col-md-3 required">
+          <label for="workexp">Work Experience</label>
+          <input
+            type="number"
+            maxlength="2"
+            minlength="1"
+            placeholder="Years"
+            min="0"
+            required
+            formControlName="year"
+            [(ngModel)]="user.workExperienceYear"
+            id="workExperienceYear" name="workExperienceYear"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="year.errors?.['required'] && (year.dirty || year.touched)"
+          >
+            Please enter No. of Years.
+          </div>
+          <!-- <div
+            class="form-text text-danger"
+            *ngIf="year.errors?.['pattern'] && (year.dirty || year.touched)"
+          >
+            Years should be numeric.
+          </div> -->
+        </div>
+        <div class="col col-md-3">
+          <label>&nbsp;</label>
+          <input
+            type="number"
+            maxlength="2"
+            minlength="1"
+            min="0"
+            max="11"
+            placeholder="Months"
+            formControlName="month"
+            required
+            [(ngModel)]="user.workExperienceMonth"
+            id="workExperienceMonth" name="workExperienceMonth"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="month.errors?.['required'] && (month.dirty || month.touched)"
+          >
+            Please enter No. of Months.
+          </div>
+          <!-- <div
+            class="form-text text-danger"
+            *ngIf="month.errors?.['pattern'] && (month.dirty || month.touched)"
+          >
+            Months should be numeric.
+          </div> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col required">
+          <label for="salary">Annual Salary ($)</label>
+          <input
+            type="text"
+            required
+            placeholder="$"
+            min="0"
+            formControlName="salary"
+            [(ngModel)]="user.annualSalary"
+            id="annualSalary" name="annualSalary"
+            
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="Salary.errors?.['required'] && (Salary.dirty || Salary.touched)"
+          >
+            Please enter Salary.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Salary.errors?.['pattern'] && (Salary.dirty || Salary.touched)"
+          >
+            Salary should be numeric.
+          </div>
+        </div>
+        <div class="col">
+          <label for="designation">Designation</label>
+          <input
+            type="text"
+            maxlength="255"
+            formControlName="designation"
+            [(ngModel)]="user.designation"
+            id="designation" name="designation"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="Designation.errors?.['maxlength'] && (Designation.dirty ||Designation.touched)"
+          >
+            Designation is too long.
+          </div>
+        </div>
+      </div>
+      <h5 class="employee-head">Office Address</h5>
+      <div class="row">
+        <div class="col required">
+          <label for="offaddl1">Address Line 1</label>
+          <input
+            type="text"
+            required
+            maxlength="255"
+            formControlName="offaddl1"
+            [(ngModel)]="user.employerAddressLine1"
+            id="employerAddressLine1" name="employerAddressLine1"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="OffAddl1.errors?.['required'] && (OffAddl1.dirty || OffAddl1.touched)"
+          >
+            Please enter Office Address.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="OffAddl1.errors?.['maxlength'] && (OffAddl1.dirty ||OffAddl1.touched)"
+          >
+            Office Address is too long.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="offaddl2">Address Line 2</label>
+          <input
+            type="text"
+            maxlength="255"
+            formControlName="offaddl2"
+            [(ngModel)]="user.employerAddressLine2"
+            id="employerAddressLine2" name="employerAddressLine2"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="OffAddl2.errors?.['maxlength'] && (OffAddl2.dirty ||OffAddl2.touched)"
+          >
+            Office Address is too long.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col required">
+          <label for="off-city">City</label>
+          <input
+            type="text"
+            required
+            maxlength="255"
+            formControlName="offcity"
+            [(ngModel)]="user.employerCity"
+            id="employerCity" name="employerCity"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="Offcity.errors?.['required'] && (Offcity.dirty || Offcity.touched)"
+          >
+            Please enter City.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Offcity.errors?.['maxlength'] && (Offcity.dirty ||Offcity.touched)"
+          >
+            City Name is too long.
+          </div>
+          <div
+              class="form-text text-danger"
+              *ngIf="Offcity.errors?.['pattern'] && (Offcity.dirty || Offcity.touched)"
+            >
+              City Name should be alphabetical.
+            </div>
+        </div>
+        <div class="col required">
+          <label for="off-state">State</label>
+          <input
+            type="text"
+            required
+            maxlength="255"
+            formControlName="offstate"
+            [(ngModel)]="user.employerState"
+            id="employerState" name="employerState"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="Offstate.errors?.['required'] && (Offstate.dirty || Offstate.touched)"
+          >
+            Please enter State.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Offstate.errors?.['maxlength'] && (Offstate.dirty ||Offstate.touched)"
+          >
+            State Name is too long.
+          </div>
+          <div
+              class="form-text text-danger"
+              *ngIf="Offstate.errors?.['pattern'] && (Offstate.dirty || Offstate.touched)"
+            >
+              State Name should be alphabetical.
+            </div>
+        </div>
+        <div class="col required">
+          <label for="off-postalcode">Postal Code</label>
+          <input
+            type="text"
+            formControlName="offpostal"
+            [(ngModel)]="user.employerPostalCode"
+            id="employerPostalCode" name="employerPostalCode"
+            minlength="5"
+            maxlength="5"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="Offpostal.errors?.['required'] && (Offpostal.dirty || Offpostal.touched)"
+          >
+            Please enter Office Postal Code.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Offpostal.errors?.['pattern'] && (Offpostal.dirty || Offpostal.touched)"
+          >
+            Office Postal Code should be numeric.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Offpostal.errors?.['maxlength'] && (Offpostal.dirty ||Offpostal.touched)"
+          >
+            Office Postal Code is too long.
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="Offpostal.errors?.['minlength'] && (Offpostal.dirty ||Offpostal.touched)"
+          >
+            Office Postal Code is too short.
+          </div>
+        </div>
+      </div>
+      <div class="bn">
+        <button class="btn2" (click)="previous()">PREVIOUS</button>
+        <button type="submit" class="btn3" id="submitDetails">SUBMIT</button>
+      </div>
+      <!-- <br>
+        <pre>{{multistep.value | json}}</pre> -->
+    </div>
+  </form>
+</div>

@@ -1,0 +1,35 @@
+.container-fluid{
+    display:flex;
+    position:relative;
+}
+.container-fluid .description{
+    padding-top:9rem;
+    padding-left: 4rem;
+    text-align:left;
+    margin:auto;
+    width:95%;
+    background-color:rgb(0, 0, 128);
+    color:white;
+    height: 80vh;
+    h1{
+        font-size: 6rem;
+    }
+    border-radius: 20px;
+    
+}
+
+.signupform{
+    padding:2rem 5rem 2rem 5rem;
+    border-radius: 20px;
+    display:flex;
+    flex-direction: column;
+    z-index: 10;
+    position:absolute;
+    right:7rem;
+    background-color: white;
+    color:grey;
+    top: 2rem;
+    h3{
+        color:rgb(0, 0, 128);
+    }
+}
